@@ -32,9 +32,7 @@
     </p>
     <p>
         {{ form.image.label }}<br>
-        {{ form.image(class="form-control", type="file", accept=".jpg, .jpeg, .png",
-            onchange='document.getElementById("image_preview").src = window.URL.createObjectURL(this.files[0])') }}<br>
-        <img id="image_preview" /><br>
+        {{ form.image(class="form-control", type="file", accept=".jpg, .jpeg, .png") }}<br>
         {% for error in form.image.errors %}
             <p content="alert alert-danger" role="alert">
                 {{ error }}

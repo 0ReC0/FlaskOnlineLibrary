@@ -7,6 +7,7 @@ from app.models.user_models import UserProfileForm
 
 main_blueprint = Blueprint('main', __name__, template_folder='templates')
 
+
 # The Home page is accessible to anyone
 @main_blueprint.route('/')
 def home_page():
@@ -62,5 +63,3 @@ def internal_server_error(error):
 @main_blueprint.app_errorhandler(Exception)
 def unhandled_exception(error):
     return render_template("errors/500.html"), 500
-
-
