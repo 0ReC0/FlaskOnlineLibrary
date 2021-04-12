@@ -1,4 +1,4 @@
-DEBUG = True
+DEBUG = False
 
 # DO NOT use Unsecure Secrets in production environments
 SECRET_KEY = '\x92UIW\xa5U\n$\x82\xaa\xcb\xf5\xab\xa2\x0e\xc7\xab\xf9\x86\xa67\xae\xbc\xe4'
@@ -22,7 +22,6 @@ USER_EMAIL_SENDER_NAME = 'temp74054'
 USER_EMAIL_SENDER_EMAIL = 'temp74054@gmail.com'
 
 # Setting for file upload, max 30 MB
-UPLOAD_FOLDER = 'D:/uploads'
 MAX_CONTENT_LENGTH = 30 * 1024 * 1024
 
 ADMINS = [
