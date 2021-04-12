@@ -21,4 +21,4 @@ if __name__ == "__main__":
     # python main.py                      # shows available commands
     # python main.py runserver --help     # shows available runserver options
     port = int(os.environ.get("PORT", 5000))
-    manager.app.run(threaded=True, debug=False, host='0.0.0.0', port=port)
+    manager.app.run(host='0.0.0.0', port=port)
