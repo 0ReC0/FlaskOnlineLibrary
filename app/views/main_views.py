@@ -51,9 +51,6 @@ def get_api_key():
         # Save user_profile
         db.session.commit()
 
-        # Redirect to home page
-        return redirect(url_for('main.get_api_key'))
-
     # Process GET or invalid POST
     return render_template('main/get_api_key.html',
                            form=form)
