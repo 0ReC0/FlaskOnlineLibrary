@@ -1,3 +1,4 @@
+import os
 from os import environ
 
 DEBUG = False
@@ -6,7 +7,10 @@ DEBUG = False
 SECRET_KEY = '\x92UIW\xa5U\n$\x82\xaa\xcb\xf5\xab\xa2\x0e\xc7\xab\xf9\x86\xa67\xae\xbc\xe4'
 
 # SQLAlchemy settings
-SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URL') or 'sqlite:///../app.sqlite'
+if environ.get('DATABASE_URL'):
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
+else:
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///../app.sqlite'
 SQLALCHEMY_TRACK_MODIFICATIONS = False    # Avoids a SQLAlchemy Warning
 
 # Flask-Mail settings
