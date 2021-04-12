@@ -20,6 +20,7 @@ Flask-SQLAlchemy==2.5.1
 Flask-User==1.0.2.2
 Flask-WTF==0.14.3
 greenlet==1.0.0
+gunicorn==20.1.0
 idna==3.1
 iniconfig==1.1.1
 itsdangerous==1.1.0
@@ -31,6 +32,7 @@ marshmallow-sqlalchemy==0.24.2
 packaging==20.9
 passlib==1.7.4
 pluggy==0.13.1
+psycopg2-binary==2.8.6
 py==1.10.0
 pycparser==2.20
 pyparsing==2.4.7
@@ -42,6 +44,6 @@ pytz==2021.1
 six==1.15.0
 SQLAlchemy==1.4.7
 toml==0.10.2
+waitress==2.0.0
 Werkzeug==1.0.1
 WTForms==2.3.3
-waitress~=2.0.0
