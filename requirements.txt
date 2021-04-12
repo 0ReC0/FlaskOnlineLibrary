@@ -44,3 +44,5 @@ SQLAlchemy==1.4.7
 toml==0.10.2
 Werkzeug==1.0.1
 WTForms==2.3.3
+
+waitress~=2.0.0
