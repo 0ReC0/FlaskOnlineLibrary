@@ -45,11 +45,11 @@ def get_api_key():
     form = GetApiForm()
 
     if request.method == 'POST':
-        db_sess = db.session
-        user = db_sess.query(User).filter_by(id=current_user.id).first()
+        user = User.query.filter_by(id=current_user.id).first()
         user.api_key = secrets.token_urlsafe(20)
         # Save user_profile
         db.session.commit()
+        return redirect(url_for('main.get_api_key'))
 
     # Process GET or invalid POST
     return render_template('main/get_api_key.html',

@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.Unicode(50), nullable=False, server_default=u'')
     last_name = db.Column(db.Unicode(50), nullable=False, server_default=u'')
 
-    api_key = db.Column(db.String(20), nullable=False, server_default='')
+    api_key = db.Column(db.Unicode(20), nullable=False, server_default=u'')
 
     # Relationships
     roles = db.relationship('Role', secondary='users_roles',
