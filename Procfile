@@ -1,1 +1,4 @@
-web: python main.py db_init; python main.py runserver --host 0.0.0.0 --port 5000
+web: python main.py runserver 0.0.0.0:5000
+init: python manage.py db init
+migrate: python manage.py db migrate
+upgrade: python manage.py db upgrade
