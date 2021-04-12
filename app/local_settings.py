@@ -1,17 +1,6 @@
-import os
-
-# *****************************
-# Environment specific settings
-# *****************************
-
-# DO NOT use "DEBUG = True" in production environments
-from flask import logging
-
 DEBUG = True
 
 # DO NOT use Unsecure Secrets in production environments
-# Generate a safe one with:
-#     python -c "import os; print(repr(os.urandom(24)));"
 SECRET_KEY = '\x92UIW\xa5U\n$\x82\xaa\xcb\xf5\xab\xa2\x0e\xc7\xab\xf9\x86\xa67\xae\xbc\xe4'
 
 # SQLAlchemy settings
@@ -19,8 +8,6 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///../app.sqlite'
 SQLALCHEMY_TRACK_MODIFICATIONS = False    # Avoids a SQLAlchemy Warning
 
 # Flask-Mail settings
-# For smtp.gmail.com to work, you MUST set "Allow less secure apps" to ON in Google Accounts.
-# Change it in https://myaccount.google.com/security#connectedapps (near the bottom).
 MAIL_SERVER = 'smtp.gmail.com'
 MAIL_PORT = 465
 MAIL_USE_SSL = True

@@ -1,9 +1,3 @@
-# Settings common to all environments (development|staging|production)
-# Place environment specific settings in env_settings.py
-# An example file (env_settings_example.py) can be used as a starting point
-
-import os
-
 # Application settings
 APP_NAME = "Flask-Onlile-Library"
 APP_SYSTEM_ERROR_SUBJECT_LINE = APP_NAME + " system error"
@@ -24,6 +18,6 @@ USER_ENABLE_EMAIL = True  # Register with Email
 USER_ENABLE_REGISTRATION = True  # Allow new users to register
 USER_REQUIRE_RETYPE_PASSWORD = True  # Prompt for `retype password` in:
 USER_ENABLE_USERNAME = False  # Register and Login with username
-USER_AFTER_LOGIN_ENDPOINT = 'main.member_page'
+USER_AFTER_LOGIN_ENDPOINT = 'book.public_books'
 USER_AFTER_LOGOUT_ENDPOINT = 'main.home_page'
 

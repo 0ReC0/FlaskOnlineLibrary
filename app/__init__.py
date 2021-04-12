@@ -5,19 +5,29 @@ from datetime import datetime
 import os
 
 from flask import Flask
-from flask_script import Manager
+from flask_marshmallow import Marshmallow
+from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
-from flask_migrate import Migrate, MigrateCommand
+from flask_migrate import Migrate
 from flask_user import UserManager
 from flask_wtf.csrf import CSRFProtect
 
 
 # Instantiate Flask extensions
+
 csrf_protect = CSRFProtect()
 db = SQLAlchemy()
+ma = Marshmallow()
+
+from app.api.resources.BooksRes import BooksRes
+from app.api.resources.BookRes import BookRes
+
+
 mail = Mail()
 migrate = Migrate()
+api = Api()
+
 
 # Initialize Flask Application
 def create_app(extra_config_settings={}):
@@ -41,6 +51,16 @@ def create_app(extra_config_settings={}):
 
     # Setup Flask-Mail
     mail.init_app(app)
+
+    # Setup Api
+    # from app.api.resources.BooksRes import BooksRes
+
+    api.add_resource(BooksRes, '/api/books')
+    api.add_resource(BookRes, '/api/books/<id>')
+    api.init_app(app)
+
+    # Setup Marshmallow
+    ma.init_app(app)
 
     # Setup WTForms CSRFProtect
     csrf_protect.init_app(app)
@@ -108,7 +128,6 @@ def init_email_error_handler(app):
     mail_handler.setLevel(logging.ERROR)
     app.logger.addHandler(mail_handler)
 
-    # Log errors using: app.logger.error('Some error message')
 
 
 

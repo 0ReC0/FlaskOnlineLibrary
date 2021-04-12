@@ -1,11 +1,9 @@
 from flask_user import UserMixin
-# from flask_user.forms import RegisterForm
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, validators
 from app import db
 
 
-# Define the User data model. Make sure to add the flask_user.UserMixin !!
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -21,6 +19,8 @@ class User(db.Model, UserMixin):
     active = db.Column('is_active', db.Boolean(), nullable=False, server_default='0')
     first_name = db.Column(db.Unicode(50), nullable=False, server_default=u'')
     last_name = db.Column(db.Unicode(50), nullable=False, server_default=u'')
+
+    api_key = db.Column(db.String(20), nullable=False, server_default='')
 
     # Relationships
     roles = db.relationship('Role', secondary='users_roles',
@@ -50,3 +50,8 @@ class UserProfileForm(FlaskForm):
     last_name = StringField('Last name', validators=[
         validators.DataRequired('Last name is required')])
     submit = SubmitField('Save')
+
+
+# Define the User api getting form
+class GetApiForm(FlaskForm):
+    submit = SubmitField('Получить новый api ключ')

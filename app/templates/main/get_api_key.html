@@ -1,0 +1,21 @@
+{% extends "main/main_base.html" %}  {# main/main_base.html extends layout.html #}
+
+{% block content %}
+<h1>Получить api ключ для взаимодействия через rest</h1>
+
+<form action="" method="POST" class="form" role="form">
+    <div class="row">
+        <div class="col-sm-6 col-md-5 col-lg-4">
+            {{ form.hidden_tag() }}
+
+            <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        </div>
+    </div>
+</form>
+{% if current_user.api_key != '' %}
+<hr class="mt-2 mb-2">
+<h1>Сгенерированный api ключ</h1>
+<input class="form-control"type="text" disabled value="{{current_user.api_key}}">
+{% endif %}
+
+{% endblock %}

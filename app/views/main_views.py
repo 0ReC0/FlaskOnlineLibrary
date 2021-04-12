@@ -1,9 +1,11 @@
+import secrets
+
 from flask import Blueprint, redirect, render_template
 from flask import request, url_for
 from flask_user import current_user, login_required, roles_required
 
 from app import db
-from app.models.user_models import UserProfileForm
+from app.models.user_models import UserProfileForm, GetApiForm, User
 
 main_blueprint = Blueprint('main', __name__, template_folder='templates')
 
@@ -12,20 +14,6 @@ main_blueprint = Blueprint('main', __name__, template_folder='templates')
 @main_blueprint.route('/')
 def home_page():
     return render_template('main/home_page.html')
-
-
-# The User page is accessible to authenticated users (users that have logged in)
-@main_blueprint.route('/member')
-@login_required  # Limits access to authenticated users
-def member_page():
-    return render_template('main/user_page.html')
-
-
-# The Admin page is accessible to users with the 'admin' role
-@main_blueprint.route('/admin')
-@roles_required('admin')  # Limits access to users with the 'admin' role
-def admin_page():
-    return render_template('main/admin_page.html')
 
 
 @main_blueprint.route('/main/profile', methods=['GET', 'POST'])
@@ -47,6 +35,27 @@ def user_profile_page():
 
     # Process GET or invalid POST
     return render_template('main/user_profile_page.html',
+                           form=form)
+
+
+@main_blueprint.route('/main/get_api_key', methods=['GET', 'POST'])
+@login_required
+def get_api_key():
+    # Initialize form
+    form = GetApiForm()
+
+    if request.method == 'POST':
+        db_sess = db.session
+        user = db_sess.query(User).filter_by(id=current_user.id).first()
+        user.api_key = secrets.token_urlsafe(20)
+        # Save user_profile
+        db.session.commit()
+
+        # Redirect to home page
+        return redirect(url_for('main.get_api_key'))
+
+    # Process GET or invalid POST
+    return render_template('main/get_api_key.html',
                            form=form)
 
 

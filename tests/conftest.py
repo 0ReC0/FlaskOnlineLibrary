@@ -1,11 +1,3 @@
-# This file contains pytest 'fixtures'.
-# If a test functions specifies the name of a fixture function as a parameter,
-# the fixture function is called and its result is passed to the test function.
-#
-# Copyright 2014 SolidBuilds.com. All rights reserved
-#
-# Authors: Ling Thio <ling.thio@gmail.com>
-
 import pytest
 from app import create_app, db as the_db
 
@@ -24,6 +16,7 @@ the_app.app_context().push()
 
 # Create and populate roles and users tables
 from app.commands.init_db import init_db
+
 init_db()
 
 
@@ -37,6 +30,7 @@ def app():
 def db():
     """ Makes the 'db' parameter available to test functions. """
     return the_db
+
 
 @pytest.fixture(scope='function')
 def session(db, request):
@@ -57,7 +51,7 @@ def session(db, request):
     request.addfinalizer(teardown)
     return session
 
+
 @pytest.fixture(scope='session')
 def client(app):
     return app.test_client()
-

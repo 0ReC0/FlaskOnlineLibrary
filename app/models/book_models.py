@@ -1,14 +1,15 @@
-from flask_user import UserMixin
-# from flask_user.forms import RegisterForm
+import base64
+
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired
-from wtforms import StringField, SubmitField, validators, TextAreaField, BooleanField, FileField
+from wtforms import StringField, SubmitField, BooleanField, FileField
 from wtforms.validators import DataRequired
 
 from app import db
+from app.api.resources.Serializer import Serializer
 
 
-class Book(db.Model):
+class Book(db.Model, Serializer):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
     image_name = db.Column(db.String(300))
@@ -30,11 +31,30 @@ class Book(db.Model):
     def __repr__(self):
         return "<Book %r>" % self.title
 
+    def serialize(self):
+        ser_temp = Serializer.serialize(self)
+        img_base = base64.b64encode(ser_temp['image_data'])
+        img_base64 = img_base.decode('ascii')
+        ser_temp['image_data'] = img_base64
+        ser_temp['image_name']
+        del ser_temp['file_data']
+        ser_temp['file_name']
+        return ser_temp
+
 
 class BookForm(FlaskForm):
     title = StringField('Заголовок', validators=[DataRequired()])
     author = StringField('Автор', validators=[DataRequired()])
     image = FileField("Картинка", validators=[FileRequired()])
     file = FileField("Файл книги", validators=[FileRequired()])
-    is_private = BooleanField("Для зарегистрированных пользователей")
+    is_private = BooleanField("Сделать книгу приватной, т.е. доступной только для зарегистрированных пользователей")
+    submit = SubmitField('Добавить')
+
+
+class BookEditForm(FlaskForm):
+    title = StringField('Заголовок', validators=[DataRequired()])
+    author = StringField('Автор', validators=[DataRequired()])
+    image = FileField("Картинка", validators=[])
+    file = FileField("Файл книги", validators=[])
+    is_private = BooleanField("Сделать книгу приватной, т.е. доступной только для зарегистрированных пользователей")
     submit = SubmitField('Добавить')
