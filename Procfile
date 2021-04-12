@@ -1,1 +1,1 @@
-web: python main.py
+web: python main.py db_init; python main.py runserver --host 0.0.0.0 --port 5000
