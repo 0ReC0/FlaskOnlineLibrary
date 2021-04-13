@@ -13,6 +13,8 @@ else:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///../app.sqlite'
 SQLALCHEMY_TRACK_MODIFICATIONS = False    # Avoids a SQLAlchemy Warning
 
+JSONIFY_PRETTYPRINT_REGULAR = True
+
 # Flask-Mail settings
 MAIL_SERVER = 'smtp.gmail.com'
 MAIL_PORT = 465

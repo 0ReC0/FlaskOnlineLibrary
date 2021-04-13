@@ -1,5 +1,5 @@
 from flask import jsonify
-from flask_restful import Resource, abort, reqparse
+from flask_restful import Resource, reqparse
 
 from app.models.book_models import Book
 from app.models.user_models import User
