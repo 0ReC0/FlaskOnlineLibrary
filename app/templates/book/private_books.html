@@ -6,7 +6,7 @@
 <div class="card-deck mt-3">
     {% if books %}
     {% for book in books %}
-    <div class="card">
+    <div class="card mb-2">
         <img class="card-img-top mx-auto d-block mt-3" src="data:image/png;base64,{{ book.img_src }}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">Название: {{ book.title }}</h5>
