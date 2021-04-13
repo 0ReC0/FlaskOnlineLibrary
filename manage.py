@@ -20,7 +20,4 @@ manager.add_command('init_db', InitDbCommand)
 if __name__ == "__main__":
     # python manage.py                      # shows available commands
     # python manage.py runserver --help     # shows available runserver options
-    # manager.run({'init_db': InitDbCommand()})
-    # port = int(os.environ.get("PORT", 5000))
-    # manager.app.run(host='0.0.0.0', port=port)
     manager.run()

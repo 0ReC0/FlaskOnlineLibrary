@@ -2,7 +2,7 @@ import secrets
 
 from flask import Blueprint, redirect, render_template
 from flask import request, url_for
-from flask_user import current_user, login_required, roles_required
+from flask_user import current_user, login_required
 
 from app import db
 from app.models.user_models import UserProfileForm, GetApiForm, User
@@ -14,6 +14,11 @@ main_blueprint = Blueprint('main', __name__, template_folder='templates')
 @main_blueprint.route('/')
 def home_page():
     return render_template('main/home_page.html')
+
+
+@main_blueprint.route('/favicon.ico')
+def favicon():
+    return redirect(url_for('static', filename='favicon.ico'))
 
 
 @main_blueprint.route('/main/profile', methods=['GET', 'POST'])

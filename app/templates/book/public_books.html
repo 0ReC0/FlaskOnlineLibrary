@@ -4,21 +4,28 @@
 <h1>Публичные книги</h1>
 <hr class="no-margins">
 <div class="card-deck mt-3">
+    {% if books %}
     {% for book in books %}
-        <div class="card">
-            <img class="card-img-top" src="data:image/png;base64,{{ book.img_src }}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Название: {{ book.title }}</h5>
-                <h5 class="card-title">Автор: {{ book.author }}</h5>
-            </div>
-            {% if current_user.is_authenticated%}
-                <div class="card-footer d-flex justify-content-center">
-                    <a href="{{ url_for('book.book_download', id=book.id) }}" class="btn btn-primary">Скачать</a>
-                </div>
-            {% endif %}
+    <div class="card">
+        <img class="card-img-top" src="data:image/png;base64,{{ book.img_src }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Название: {{ book.title }}</h5>
+            <h5 class="card-title">Автор: {{ book.author }}</h5>
         </div>
-
+        {% if current_user.is_authenticated%}
+        <div class="card-footer d-flex justify-content-center">
+            <a href="{{ url_for('book.book_download', id=book.id) }}" class="btn btn-primary">Скачать</a>
+        </div>
+        {% endif %}
+    </div>
     {% endfor %}
+    {% else %}
+    <div class="card">
+        <div class="card-body">
+            <h5>На данный момент книг нет</h5>
+        </div>
+    </div>
+    {% endif %}
 
 </div>
 
