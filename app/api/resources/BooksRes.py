@@ -15,7 +15,7 @@ class BooksRes(Resource):
         if api_key:
             user_api = User.query.filter(User.api_key == api_key).first()
             if user_api:
-                books = Book.query.order_by(Book.title).all()
+                books = Book.query.order_by(Book.id).all()
                 return jsonify(Book.serialize_list(books))
         books = Book.query.filter(Book.is_private == False).order_by(Book.id).all()
         return jsonify(Book.serialize_list(books))
