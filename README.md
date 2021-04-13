@@ -1,121 +1,74 @@
-# Flask-User starter app v1.0
+# Техническое задание
+## Введение
+Для реализации проекта по WEB выбран проект реализации онлайн библиотеки под названием "Flask Online Library". Незарегистрированные пользователи могут просматривать публичные книги и получать информацию о них через api. Зарегистрированные пользователи могут просматривать публичные и приватные книги и получать информацию о них через api, приватные книги можно получить с помощью api ключа, который можно получить на сайте, а также скачивать книги через сайт. Администратор может просматривать, добалять, редактировать, удалять публичные и приватные книги, также он имеет функционал зарегистрированного пользователя.
+## Назначение
+Проект "Flask Online Library" предназначен для хранения книг, информации о ней, например названия, автора, с возможностью скачивания книг. Проект может быть применен в научных журналах, вузах, школах с целью публикации книг, методичек, статей.
+## Цель
+Реализовать веб-приложение "Flask Online Library", использующее базу данных, с использованием фреймворка Flask с разворачиванием веб-приложения на облачной платформе heroku.
+## Задачи
+1. Реализовать главную форму пользовательского интерфейса для просмотра, редактирования, удаления текстовой информации в sqlite базе данных с использованием программы QtDesigner
+2. Реализовать открытие, сохрание sqlite базы данных с использованием диалоговых окон pyqt5
+3. Реализовать отображение данных таблиц базы данных в виджетах QTableWidget, разделение между таблицами реализовать с помощью QTabWidget
+4. Реализовать редактирование текстовой информации в одной таблице и сохранение изменений в открытой базе данных
+5. Реализовать редактирование текстовой информации в нескольких таблицах данных и сохранение изменений в нескольких таблицах данных одновременно в открытой базе данных
+6. Реализовать удаление строк базы данных при помощи выделения данных строк в виджете QTableWidget
+7. Реализовать форму замены картинок с расширением "jpg, jpeg" с использованием программы QtDesigner
+8. Реализовать просмотр, замену картинки в базе данных при помощи формы замены картинок
+## Требования к проекту
+1. Проект должен быть реализован с помощью PyQt
+2. Проект должен позволять открывать sqlite базу данных
+3. Проект должен позволять сохранять sqlite базу данных с определенным пользователем именем базы данных
+4. Проект должен позволять просматривать текстовые данные и картинки с расширениями jpg, jpeg при помощи виджета QTableWidget с отображением полей таблиц открытой базы данных
+5. Проект должен позволять редактировать текстовые данные таблиц открытой базы данных
+6. Проект должен позволять заменять картинки в таблицах другой картинкой с расширениями jpg, jpeg открытой базы данных
+7. Проект должен позволять просматривать картинки с расширениями jpg, jpeg на замену в форме замены картинки
+8. Проект должен позволять удалять строки базы данных при помощи выделения данных строк в виджете QTableWidget
+9. Проект должен позволять редактировать текстовую информацию в нескольких таблицах данных и сохранение изменений в нескольких таблицах данных одновременно в открытой базе данных
+10. Проект должен реализовывать разделение между таблицами базы данных при помощи виджета QTabWidget
+## Используемые технологии
+1. Библиотека PyQt5
+2. PyQtDesigner
+3. Библиотека Magic для определения расширения файла
 
-This code base serves as starting point for writing your next Flask application.
+# Запуск проекта
+## Запуск без использования исходников
+Для запуска на Windows запустите файл ```QtDbEditor.exe``` из папки dist в корне проекта
+## Запуск с использованием исходников
+### Установка всех необходимых зависимостей
+Пропишите в терминале в PyCharm или в любой консоли в корне проекта ```pip install -r requirements.txt```
+### Запуск
+Для запуска проекта запустите файл ```main.py```
 
-This branch is for Flask-User v1.0.
+# Инструкция по использованию
+Для использования приложения вам необходимо запустить проект по инструкции выше, далее вы можете использовать приложение в соответсвии с приведенными ниже сценариями использования.
+## Сценарии использования
+### 1. Изменение текстовых данных в 1 таблице базы данных
+1. Откройте базу данных при помощи окна выбора базы данных при помощи действия ```Открыть базу данных``` в меню ```File``` или с помощью сочетания клавиш CTRL + O.
+2. Измените элемент, кроме элементов колонки ```id```,  в открытой таблице в определеной вкладке при помощи нажатии на элемент и ввода в это поле другого значения соответствуещего типу данной колонки.
+![./images/1.png](./images/1.png)
+3. Для сохранения изменений нажмите на кнопку ```Сохранить текущую таблицу```, не меняя вкладку выбора таблицы.
 
-For Flask-User v0.6, see [the Flask-User-Starter-App v0.6 branch](https://github.com/lingthio/Flask-User-starter-app/tree/v0.6).
+### 2. Изменение текстовых данных в нескольких таблицах базы данных
+1. Откройте базу данных при помощи окна выбора базы данных при помощи действия ```Открыть базу данных``` в меню ```File``` или с помощью сочетания клавиш CTRL + O.
+2. Измените элементы, кроме элементов колонки ```id```,  в открытых таблицах в нескольких вкладках при помощи нажатии на элемент и ввода в это поле другого значения соответствуещего типу данной колонки.
+![./images/2.png](./images/2.png)
+3. Для сохранения изменений нажмите на кнопку  ```Сохранить все таблицы```
 
-## Code characteristics
+### 3. Удаление строк определенной таблицы базы данных
+1. Откройте базу данных при помощи окна выбора базы данных при помощи действия ```Открыть базу данных``` в меню ```File``` или с помощью сочетания клавиш CTRL + O.
+2. Выделите одну или несколько строк таблицы базы данных
+![./images/3.png](./images/3.png)
+3. Для удаления нажмите на кнопку ```Удалить выбранные элементы и обновить таблицу``` и в отрытом диалоговом окно нажмите ```Yes```
+![./images/4.png](./images/4.png)
 
-* Tested on Python 2.6, 2.7, 3.3, 3.4, 3.5 and 3.6
-* Well organized directories with lots of comments
-    * app
-        * commands
-        * models
-        * static
-        * templates
-        * views
-    * tests
-* Includes test framework (`py.test` and `tox`)
-* Includes database migration framework (`alembic`)
-* Sends error emails to admins for unhandled exceptions
+### 4. Замена картинки
+1. Откройте базу данных при помощи окна выбора базы данных при помощи действия ```Открыть базу данных``` в меню ```File``` или с помощью сочетания клавиш CTRL + O.
+2. Нажмите на кнопку ```Открыть файл``` у элемента, у которого есть файл картинки с расширением jpg, jpeg
+3. Вы можете отдалить или приблизить картинку для просмотра, далее выберите картинку на замену, для этого нажмите на кнопку ```Открыть картинку на замену```
+![./images/5.png](./images/5.png)
+4. Вы можете отдалить или приблизить картинку для просмотра картинки на замену, для замены нажмите на кнопку ```Заменить исходную картинку на текущую открытую``` 
+![./images/6.png](./images/6.png)
 
-
-## Setting up a development environment
-
-We assume that you have `git` and `virtualenv` and `virtualenvwrapper` installed.
-
-    # Clone the code repository into ~/dev/my_app
-    mkdir -p ~/dev
-    cd ~/dev
-    git clone https://github.com/lingthio/Flask-User-starter-app.git my_app
-
-    # Create the 'my_app' virtual environment
-    mkvirtualenv -p PATH/TO/PYTHON my_app
-
-    # Install required Python packages
-    cd ~/dev/my_app
-    workon my_app
-    pip install -r requirements.txt
-
-
-# Configuring SMTP
-
-Copy the `local_settings_example.py` file to `local_settings.py`.
-
-    cp app/local_settings_example.py app/local_settings.py
-
-Edit the `local_settings.py` file.
-
-Specifically set all the MAIL_... settings to match your SMTP settings
-
-Note that Google's SMTP server requires the configuration of "less secure apps".
-See https://support.google.com/accounts/answer/6010255?hl=en
-
-Note that Yahoo's SMTP server requires the configuration of "Allow apps that use less secure sign in".
-See https://help.yahoo.com/kb/SLN27791.html
-
-
-## Initializing the Database
-
-    # Create DB tables and populate the roles and users tables
-    python manage.py init_db
-
-    # Or if you have Fabric installed:
-    fab init_db
-
-
-## Running the app
-
-    # Start the Flask development web server
-    python manage.py runserver
-
-    # Or if you have Fabric installed:
-    fab runserver
-
-Point your web browser to http://localhost:5000/
-
-You can make use of the following users:
-- email `user@example.com` with password `Password1`.
-- email `admin@example.com` with password `Password1`.
-
-
-## Running the automated tests
-
-    # Start the Flask development web server
-    py.test tests/
-
-    # Or if you have Fabric installed:
-    fab test
-
-
-## Trouble shooting
-
-If you make changes in the Models and run into DB schema issues, delete the sqlite DB file `app.sqlite`.
-
-
-## See also
-
-* [FlaskDash](https://github.com/twintechlabs/flaskdash) is a starter app for Flask
-  with [Flask-User](https://readthedocs.org/projects/flask-user/)
-  and [CoreUI](https://coreui.io/) (A Bootstrap Admin Template).
-
-## Acknowledgements
-
-With thanks to the following Flask extensions:
-
-* [Alembic](http://alembic.zzzcomputing.com/)
-* [Flask](http://flask.pocoo.org/)
-* [Flask-Login](https://flask-login.readthedocs.io/)
-* [Flask-Migrate](https://flask-migrate.readthedocs.io/)
-* [Flask-Script](https://flask-script.readthedocs.io/)
-* [Flask-User](http://flask-user.readthedocs.io/en/v0.6/)
-
-<!-- Please consider leaving this line. Thank you -->
-[Flask-User-starter-app](https://github.com/lingthio/Flask-User-starter-app) was used as a starting point for this code repository.
-
-
-## Authors
-
-- Ling Thio -- ling.thio AT gmail DOT com
+### 5. Сохранение базы данных под другим именем
+1. Откройте базу данных при помощи окна выбора базы данных при помощи действия ```Открыть базу данных``` в меню ```File``` или с помощью сочетания клавиш CTRL + O.
+2. Сохраните базу данных при помощи окна сохранения базы данных при помощи действия ```Сохранить базу данных как``` в меню ```File```.
