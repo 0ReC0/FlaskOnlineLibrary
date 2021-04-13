@@ -36,14 +36,12 @@ class Book(db.Model, Serializer):
         img_base = base64.b64encode(ser_temp['image_data'])
         img_base64 = img_base.decode('ascii')
         ser_temp['image_data'] = img_base64
-        ser_temp['image_name']
         del ser_temp['file_data']
-        ser_temp['file_name']
         return ser_temp
 
 
 class BookForm(FlaskForm):
-    title = StringField('Заголовок', validators=[DataRequired()])
+    title = StringField('Название', validators=[DataRequired()])
     author = StringField('Автор', validators=[DataRequired()])
     image = FileField("Картинка", validators=[FileRequired()])
     file = FileField("Файл книги", validators=[FileRequired()])
@@ -51,10 +49,6 @@ class BookForm(FlaskForm):
     submit = SubmitField('Добавить')
 
 
-class BookEditForm(FlaskForm):
-    title = StringField('Заголовок', validators=[DataRequired()])
-    author = StringField('Автор', validators=[DataRequired()])
+class BookEditForm(BookForm):
     image = FileField("Картинка", validators=[])
     file = FileField("Файл книги", validators=[])
-    is_private = BooleanField("Сделать книгу приватной, т.е. доступной только для зарегистрированных пользователей")
-    submit = SubmitField('Добавить')
