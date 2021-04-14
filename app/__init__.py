@@ -1,17 +1,13 @@
 # __init__.py is a special Python file that allows a directory to become
 # a Python package so it can be accessed using the 'import' statement.
 
-from flask import Flask, url_for
+from flask import Flask
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_migrate import Migrate
 from flask_user import UserManager
 from flask_wtf.csrf import CSRFProtect
-
-
-# Instantiate Flask extensions
-from werkzeug.utils import redirect
 
 csrf_protect = CSRFProtect()
 db = SQLAlchemy()
